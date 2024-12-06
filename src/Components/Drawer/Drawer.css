@@ -1,0 +1,42 @@
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #003060;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+  }
+  
+  .drawer.open {
+    right: 0;
+  }
+  
+  .drawer-close {
+    color: white;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    align-self: flex-end;
+    cursor: pointer;
+  }
+  
+  .drawer-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .drawer-links li {
+    margin: 10px 0;
+  }
+  
+  .drawer-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
