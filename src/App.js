@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './Components/Header/Header';
-import CartDrawer from './Components/Cart/Cart'; // Make sure to import CartDrawer
+import CartDrawer from './Components/Cart/Cart'; 
 import Products from './Components/Products/Products';
 import ProductDetail from './Components/PorductDetail/ProductDetail';
 import Footer from './Components/Footer/Footer';
@@ -22,7 +22,6 @@ const App = () => {
   return (
     <Router>
       <Header toggleDrawer={toggleDrawer} />
-      {/* The Drawer will open based on the state of `drawerOpen` */}
       <CartDrawer isOpen={drawerOpen} closeDrawer={closeDrawer} />
       <HeroSection />
       <Routes>

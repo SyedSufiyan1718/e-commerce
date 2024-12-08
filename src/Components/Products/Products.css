@@ -1,11 +1,10 @@
-/* Products Container */
+
 .products-container {
     padding: 40px 32px;
     background-color: #f9f9f9;
     text-align: center;
   }
   
-  /* Heading and Description */
   .products-heading {
     font-size: 2.5rem;
     color: #003060;
@@ -18,7 +17,6 @@
     margin-bottom: 30px;
   }
   
-  /* Products Grid */
   .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -26,7 +24,6 @@
     margin-top: 35px;
   }
   
-  /* Product Card */
   .product-card {
     background: #ffffff;
     border-radius: 8px;
@@ -43,7 +40,6 @@
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
   }
   
-  /* Product Image */
   .product-image {
     width: 100%;
     height: 200px;
@@ -52,7 +48,6 @@
     padding: 10px;
   }
   
-  /* Product Info */
   .product-info {
     padding: 10px 15px;
   }
@@ -71,8 +66,7 @@
     color: #003060;
     font-weight: bold;
   }
-  
-  /* Add to Cart Button */
+
   .add-to-cart-btn {
     padding: 10px;
     font-size: 1rem;
@@ -92,14 +86,10 @@
     background-color: #0056b3;
   }
   
-  /* Cart Icon */
   .cart-icon {
     font-size: 1.2rem;
   }
   
-  /* new style */
-
-
   .products-container {
     padding: 20px;
   }

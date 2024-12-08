@@ -1,6 +1,6 @@
 import React from 'react';
-import './HeroSec.css'; // Ensure this includes both header and hero styles
-import heroImg from '../assets/heroImage.avif'; // Replace with your actual image path
+import './HeroSec.css'; 
+import heroImg from '../assets/heroImage.avif';
 
 export const HeroSection = () => {
   return (
@@ -16,7 +16,6 @@ export const HeroSection = () => {
         <button onClick={() => console.log('Explore Now clicked!')}>Explore Now</button>
       </div>
 
-      {/* Image Section */}
       <div className="hero-image">
         <img src={heroImg} alt="E-commerce Showcase" />
       </div>

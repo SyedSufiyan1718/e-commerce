@@ -9,7 +9,6 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [isInCart, setIsInCart] = useState(false);
 
-  // Fetch product details from the API
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -22,7 +21,6 @@ const ProductDetail = () => {
     fetchProduct();
   }, [id]);
 
-  // Add product to the cart (or update the quantity if it already exists)
   const handleAddToCart = (product_id) => {
     const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
     const productIndex = existingCart.findIndex(item => item.product_id === product_id);
@@ -40,10 +38,9 @@ const ProductDetail = () => {
     }
 
     localStorage.setItem('cart_data', JSON.stringify(existingCart));
-    setIsInCart(true); // Mark the product as added to cart
+    setIsInCart(true); 
   };
 
-  // Remove product from the cart
   const handleRemoveFromCart = (product_id) => {
     const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
     const productIndex = existingCart.findIndex(item => item.product_id === product_id);
@@ -51,11 +48,10 @@ const ProductDetail = () => {
     if (productIndex !== -1) {
       existingCart.splice(productIndex, 1);
       localStorage.setItem('cart_data', JSON.stringify(existingCart));
-      setIsInCart(false); // Mark the product as removed from cart
+      setIsInCart(false); 
     }
   };
 
-  // Check if product is already in cart
   useEffect(() => {
     const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
     const productInCart = existingCart.find(item => item.product_id === product.id);

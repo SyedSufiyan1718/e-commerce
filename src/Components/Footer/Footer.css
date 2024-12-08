@@ -1,4 +1,4 @@
-/* Footer Styling */
+
 .footer {
     background-color: #003060;
     color: #ffffff;
@@ -14,7 +14,6 @@
     margin: 0 auto;
   }
   
-  /* Footer Section */
   .footer-section {
     padding: 10px;
   }
@@ -53,7 +52,6 @@
     color: #00aaff;
   }
   
-  /* Social Media Icons */
   .social-icons {
     display: flex;
     justify-content: center;
@@ -72,7 +70,6 @@
     color: #00aaff;
   }
   
-  /* Footer Bottom */
   .footer-bottom {
     margin-top: 20px;
     font-size: 0.85rem;

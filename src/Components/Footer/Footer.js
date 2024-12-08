@@ -48,7 +48,6 @@ const Footer = () => {
           <p>Address: 123 E-Commerce St, Shop City</p>
         </div>
 
-        {/* Social Media Section */}
         <div className="footer-section">
           <h3 className="footer-heading">Follow Us</h3>
           <div className="social-icons">
