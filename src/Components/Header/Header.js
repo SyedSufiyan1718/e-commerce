@@ -1,6 +1,5 @@
 import React from 'react';
 import { FaCartArrowDown } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import './Header.css';
 import img from '../assets/logo.png'
 
