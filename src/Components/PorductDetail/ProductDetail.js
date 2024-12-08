@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './ProductDetail.css';
@@ -6,24 +6,61 @@ import './ProductDetail.css';
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1); // For quantity selection
+  const [quantity, setQuantity] = useState(1);
+  const [isInCart, setIsInCart] = useState(false);
 
+  // Fetch product details from the API
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`https://fakestoreapi.com/products/${id}`);
         setProduct(response.data);
       } catch (error) {
-        console.error('Error fetching product details:', error);
+        console.error("Error fetching product details:", error);
       }
     };
     fetchProduct();
   }, [id]);
 
-  const handleAddToCart = () => {
-    // Logic to add the item to the cart
-    console.log(`Added ${quantity} of ${product.title} to cart.`);
+  // Add product to the cart (or update the quantity if it already exists)
+  const handleAddToCart = (product_id) => {
+    const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
+    const productIndex = existingCart.findIndex(item => item.product_id === product_id);
+
+    if (productIndex !== -1) {
+      existingCart[productIndex].quantity += quantity;
+    } else {
+      existingCart.push({
+        product_id,
+        quantity,
+        price: product.price,
+        title: product.title,
+        image: product.image
+      });
+    }
+
+    localStorage.setItem('cart_data', JSON.stringify(existingCart));
+    setIsInCart(true); // Mark the product as added to cart
   };
+
+  // Remove product from the cart
+  const handleRemoveFromCart = (product_id) => {
+    const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
+    const productIndex = existingCart.findIndex(item => item.product_id === product_id);
+
+    if (productIndex !== -1) {
+      existingCart.splice(productIndex, 1);
+      localStorage.setItem('cart_data', JSON.stringify(existingCart));
+      setIsInCart(false); // Mark the product as removed from cart
+    }
+  };
+
+  // Check if product is already in cart
+  useEffect(() => {
+    const existingCart = JSON.parse(localStorage.getItem('cart_data')) || [];
+    const productInCart = existingCart.find(item => item.product_id === product.id);
+    setIsInCart(!!productInCart);
+  }, [product.id]);
 
   return (
     <div className="product-detail-container">
@@ -49,8 +86,15 @@ const ProductDetail = () => {
             />
           </div>
 
-          <button className="add-to-cart-btn" onClick={handleAddToCart}>
-            Add to Cart
+          <button
+            className="add-to-cart-btn"
+            onClick={() =>
+              isInCart
+                ? handleRemoveFromCart(product.id)
+                : handleAddToCart(product.id)
+            }
+          >
+            {isInCart ? "Remove from Cart" : "Add to Cart"}
           </button>
         </div>
       </div>
